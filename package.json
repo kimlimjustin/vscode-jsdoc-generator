@@ -1,6 +1,14 @@
 {
-  "name": "jsdoc-generator",
-	"displayName": "jsdoc-generator",
+  	"name": "jsdoc-generator",
+	"publisher": "kimlimjustin",
+	"author": "Justin Maximillian Kimlim <kimlimjustin@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kimlimjustin/vscode-jsdoc-generator.git"
+	},
+	"license": "MIT",
+	"icon": "images/icon.png",
+	"displayName": "JSDoc Generator",
 	"description": "JSDoc template generator",
 	"version": "0.0.1",
 	"engines": {
