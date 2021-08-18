@@ -38,7 +38,9 @@ const generateJSDoc = () => {
             })
             .join('');
         // return value
-        text += `* @returns {any}\r`;
+        if (!/constructor/i.test(selectionText)) {
+            text += `* @returns {any}\r`;
+        }
         text += `*/\r`;
 
         const whitespace = selectionLine.firstNonWhitespaceCharacterIndex;
