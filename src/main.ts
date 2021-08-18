@@ -19,6 +19,19 @@ const generateJSDoc = () => {
     }
     const paramList = m[1].replace(/[\t\s\r]/g, '').split(',').filter(s => s !== '');
 
+    let jsdocExist = editor.document.lineAt(editor.selection.active.line - 1).text.indexOf(' */') !== -1;
+    let _line = editor.selection.active.line - 2;
+    if(jsdocExist){
+        while(editor.document.lineAt(_line).text.indexOf("/**") === -1){
+            if(editor.document.lineAt(_line).text.indexOf("*") === -1){
+                jsdocExist = false;
+                break;
+            }
+            _line -= 1;
+        }
+    }
+
+
     editor.edit(editBuilder => {
         // Insert text above current line
         const selectionLine = editor.document.lineAt(selection.start.line);
@@ -49,6 +62,9 @@ const generateJSDoc = () => {
         text = `${padSpaceStr}${text}`;
         text = text.slice(0, text.length - whitespace - 1);
 
+        if(jsdocExist){
+            editBuilder.delete(new vscode.Range(new vscode.Position(_line, 0), new vscode.Position(editor.selection.active.line, 0)));
+        }
         // Insert the text :)
         editBuilder.insert(insertPosition, text);
     });
