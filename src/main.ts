@@ -12,6 +12,24 @@ const generateJSDoc = () => {
     // Get texts of the selection or current line content if no selection
     const selectionText = editor.document.getText(selection) || text;
     const getParamReg = /\(([^)]*)\)/;
+
+    const isClass = /class/i.test(selectionText);
+    
+    if (isClass) {
+        editor.edit(editBuilder => {
+            // Insert text above current line
+            const selectionLine = editor.document.lineAt(selection.start.line);
+            const insertPosition = selectionLine.range.start;
+            const whitespace = selectionLine.firstNonWhitespaceCharacterIndex;
+            let text = '/** Your class description */\r';
+            const padSpaceStr = ' '.repeat(whitespace);
+            text = text.replace(/\r/g, `\r${padSpaceStr} `);
+            text = `${padSpaceStr}${text}`;
+            text = text.slice(0, text.length - whitespace - 1);
+            editBuilder.insert(insertPosition, text);
+        });
+        return;
+    }
     // Check if the line matches function params;
     const m = selectionText.match(getParamReg);
     if (!m) {
