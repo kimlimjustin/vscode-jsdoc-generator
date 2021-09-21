@@ -37,7 +37,7 @@ const generateJSDoc = () => {
     }
     const paramList = m[1].replace(/[\t\s\r]/g, '').split(',').filter(s => s !== '');
 
-    let jsdocExist = editor.document.lineAt(editor.selection.active.line - 1).text.indexOf(' */') !== -1;
+    let jsdocExist = editor.selection.active.line > 0 ? editor.document.lineAt(editor.selection.active.line - 1).text.indexOf(' */') !== -1 : false;
     let _line = editor.selection.active.line - 2;
     if(jsdocExist){
         while(editor.document.lineAt(_line).text.indexOf("/**") === -1){
