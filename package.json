@@ -27,7 +27,14 @@
   	  	  	  	"command": "jsdoc-generator.generateJSDoc",
   	  	  	  	"title": "Generate JSDoc"
   	  	  	}
-  	  	]
+  	  	],
+		"keybindings": [
+			{
+				"command": "jsdoc-generator.generateJSDoc",
+				"key": "alt+j",
+				"mac": "cmd+j"
+			}
+		]
   	},
   	"scripts": {
   	  	"vscode:prepublish": "yarn run compile",
