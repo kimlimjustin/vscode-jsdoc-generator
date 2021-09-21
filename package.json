@@ -10,7 +10,7 @@
   	"icon": "images/icon.png",
   	"displayName": "JSDoc Generator",
   	"description": "JSDoc template generator",
-  	"version": "0.0.2",
+  	"version": "0.0.3",
   	"engines": {
   	  	"vscode": "^1.57.0"
   	},
