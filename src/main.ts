@@ -76,8 +76,9 @@ const generateJSDoc = () => {
 
         const whitespace = selectionLine.firstNonWhitespaceCharacterIndex;
         const padSpaceStr = ' '.repeat(whitespace);
-        text = text.replace(/\r/g, `\r${padSpaceStr} `);
-        text = `${padSpaceStr}${text}`;
+        const numberOfTab = selectionLine.text.split(/[^\t]/)[0].length;
+        text = '\t'.repeat(numberOfTab) + text.replace(/\r/g, `\r${'\t'.repeat(numberOfTab)} `);
+        //text = `${padSpaceStr}${text}`;
         text = text.slice(0, text.length - whitespace - 1);
 
         if(jsdocExist){
