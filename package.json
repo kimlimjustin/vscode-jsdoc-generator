@@ -10,7 +10,7 @@
   	"icon": "images/icon.png",
   	"displayName": "JSDoc Generator",
   	"description": "JSDoc template generator",
-  	"version": "0.0.3",
+  	"version": "0.0.4",
   	"engines": {
   	  	"vscode": "^1.57.0"
   	},
@@ -28,13 +28,13 @@
   	  	  	  	"title": "Generate JSDoc"
   	  	  	}
   	  	],
-		"keybindings": [
-			{
-				"command": "jsdoc-generator.generateJSDoc",
-				"key": "alt+j",
-				"mac": "cmd+j"
-			}
-		]
+  	  	"keybindings": [
+  	  	  	{
+  	  	  	  	"command": "jsdoc-generator.generateJSDoc",
+  	  	  	  	"key": "alt+j",
+  	  	  	  	"mac": "cmd+j"
+  	  	  	}
+  	  	]
   	},
   	"scripts": {
   	  	"vscode:prepublish": "yarn run compile",
